@@ -27,7 +27,7 @@ const Search = ({ properties }) => {
         justifyContent='center'
         alignItems='center'
       >
-        <Text>Search Property By Filters</Text>
+        <Text>Search Property</Text>
         <Icon paddingLeft='2' w='7' as={BsFilter} />
       </Flex>
       {searchFilters && <SearchFilters />}
@@ -60,7 +60,6 @@ export async function getServerSideProps({ query }) {
   const categoryExternalID = query.categoryExternalID || '4';
 
   const data = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=${locationExternalIDs}&purpose=${purpose}&categoryExternalID=${categoryExternalID}&bathsMin=${bathsMin}&rentFrequency=${rentFrequency}&priceMin=${minPrice}&priceMax=${maxPrice}&roomsMin=${roomsMin}&sort=${sort}&areaMax=${areaMax}`);
-
   return {
     props: {
       properties: data?.hits,
